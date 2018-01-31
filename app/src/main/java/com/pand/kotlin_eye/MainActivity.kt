@@ -6,7 +6,6 @@ class MainActivity : BaseActivity() {
     override fun getLayoutRes() = R.layout.activity_main
     
     override fun initData() {
-
     }
 
 }
