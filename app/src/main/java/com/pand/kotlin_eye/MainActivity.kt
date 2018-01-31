@@ -1,12 +1,10 @@
 package com.pand.kotlin_eye
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import com.pand.kotlin_eye.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+    override fun getLayoutRes() = R.layout.activity_main
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+    override fun initData() {}
+
 }
