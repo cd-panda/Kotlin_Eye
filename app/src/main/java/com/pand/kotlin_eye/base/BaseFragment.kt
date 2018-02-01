@@ -18,14 +18,14 @@ abstract class BaseFragment<T : BaseViewModel, D : ViewDataBinding> : Fragment()
     lateinit var mBinding: D
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
-        getViewModel()
+        mViewModel=getViewModel()
         setViewModel()
         return mBinding.root
     }
     
     abstract fun setViewModel()
     
-    abstract fun getViewModel()
+    abstract fun getViewModel():T
     
     abstract fun getLayoutRes(): Int
 }

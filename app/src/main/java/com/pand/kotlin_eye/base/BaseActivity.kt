@@ -15,9 +15,9 @@ abstract class BaseActivity<T : BaseViewModel, D : ViewDataBinding> : AppCompatA
     val TAG = this::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       initDataBinding()
-        initData()
         mViewModel = getViewModel()
+        initDataBinding()
+        initData()
     }
     
     private fun initDataBinding() {
