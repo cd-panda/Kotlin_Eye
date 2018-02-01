@@ -5,11 +5,12 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 /**
  * Created by 李培生 on 2018/1/31 14:22
  */
-abstract class BaseActivity<T : BaseViewModel, D : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<T : BaseViewModel, D : ViewDataBinding> : RxAppCompatActivity() {
     var mViewModel: T? = null
     var mBinding: D? = null
     val TAG = this::class.java.simpleName
