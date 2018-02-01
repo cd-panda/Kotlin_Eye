@@ -1,4 +1,4 @@
-package com.pand.kotlin_eye
+package com.pand.kotlin_eye.mvvm.ui.activity
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -6,18 +6,15 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.databinding.ViewDataBinding
+import com.pand.kotlin_eye.R
 import com.pand.kotlin_eye.base.BaseActivity
 import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity<BaseViewModel,ViewDataBinding>() {
-    override fun setViewModel() {
-
-    }
+    override fun setViewModel() {}
     
-    override fun getViewModel(): BaseViewModel? {
-       return null
-    }
+    override fun getViewModel(): BaseViewModel?=null
     
     override fun getLayoutRes() = R.layout.activity_splash
     
@@ -25,7 +22,7 @@ class SplashActivity : BaseActivity<BaseViewModel,ViewDataBinding>() {
 //        Observable.timer(2,TimeUnit.SECONDS).subscribe({toMain()})
         var aniX = ObjectAnimator.ofFloat(img, "scaleX", 1f, 1.3f)
         var aniY = ObjectAnimator.ofFloat(img, "scaleY", 1f, 1.3f)
-        AnimatorSet().run {
+        val animation = AnimatorSet().apply {
             duration = 2000
             playTogether(aniX, aniY)
             /*object 为匿名对象
@@ -38,12 +35,20 @@ class SplashActivity : BaseActivity<BaseViewModel,ViewDataBinding>() {
             })
             start()
         }
+        /*如果不想等待动画结束。点击跳转
+        * 本来想调用animation的cancle，但是还是会走end回调。所以就用removeAllListeners方式了
+        * */
+        img.setOnClickListener {
+            animation.removeAllListeners()
+            toMain()
+        }
     }
     
+    /**
+     * 跳转到主界面
+     */
     private fun toMain() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-    
-    
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pand.kotlin_eye.SplashActivity">
+    tools:context="com.pand.kotlin_eye.mvvm.ui.activity.SplashActivity">
 <ImageView
     android:id="@+id/img"
     android:layout_width="match_parent"
