@@ -5,10 +5,20 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.databinding.ViewDataBinding
 import com.pand.kotlin_eye.base.BaseActivity
+import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
 import kotlinx.android.synthetic.main.activity_splash.*
 
-class SplashActivity : BaseActivity() {
+class SplashActivity : BaseActivity<BaseViewModel,ViewDataBinding>() {
+    override fun setViewModel() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    
+    override fun getViewModel(): BaseViewModel {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    
     override fun getLayoutRes() = R.layout.activity_splash
     
     override fun initData() {
