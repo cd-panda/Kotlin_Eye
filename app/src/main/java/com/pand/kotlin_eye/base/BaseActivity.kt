@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity
 /**
 * Created by 李培生 on 2018/1/31 14:22
 */
-open abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+     val TAG=this::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutRes())
