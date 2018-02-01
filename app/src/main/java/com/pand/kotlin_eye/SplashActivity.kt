@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity<BaseViewModel,ViewDataBinding>() {
     override fun setViewModel() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
     
-    override fun getViewModel(): BaseViewModel {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getViewModel(): BaseViewModel? {
+       return null
     }
     
     override fun getLayoutRes() = R.layout.activity_splash

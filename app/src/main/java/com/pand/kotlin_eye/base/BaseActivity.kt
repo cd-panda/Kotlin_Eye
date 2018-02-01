@@ -10,30 +10,30 @@ import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
  * Created by 李培生 on 2018/1/31 14:22
  */
 abstract class BaseActivity<T : BaseViewModel, D : ViewDataBinding> : AppCompatActivity() {
-    lateinit var mViewModel: T
-    lateinit var mBinding: D
+    var mViewModel: T? = null
+    var mBinding: D? = null
     val TAG = this::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel = getViewModel()
         initDataBinding()
         initData()
     }
-    
+
     private fun initDataBinding() {
-       mBinding= DataBindingUtil.setContentView(this,getLayoutRes())
+        mBinding = DataBindingUtil.setContentView(this, getLayoutRes())
+        mViewModel = getViewModel()
         setViewModel()
     }
-    
+
     abstract fun setViewModel()
-    
-    abstract fun getViewModel(): T
-    
+
+    abstract fun getViewModel(): T?
+
     /**
      * Activity 提供布局文件
      */
     abstract fun getLayoutRes(): Int
-    
+
     /**
      * 加载数据
      */
