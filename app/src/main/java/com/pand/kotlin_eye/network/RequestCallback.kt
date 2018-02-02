@@ -1,6 +1,7 @@
 package com.pand.kotlin_eye.network
 
 import android.content.Context
+import android.widget.Toast
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
@@ -10,8 +11,9 @@ import io.reactivex.disposables.Disposable
  * @desc：
  */
 abstract class RequestCallback<T>(private val context: Context) : Observer<ResponseWrapper<T>> {
-    abstract fun success(data: ResponseWrapper<T>)
+    protected open fun success(data: ResponseWrapper<T>) {}
     abstract fun onFail(e: Throwable)
+    protected open fun success(data: T) {}
 
     object status {
         val success = 1000
@@ -19,8 +21,13 @@ abstract class RequestCallback<T>(private val context: Context) : Observer<Respo
 
     override fun onNext(t: ResponseWrapper<T>) {
         if (t.code == status.success) {
-            success(t)
+            if (t.data == null) {
+                success(t)
+            } else {
+                success(t.data)
+            }
         }
+        Toast.makeText(context,"",Toast.LENGTH_SHORT)
 
     }
 
