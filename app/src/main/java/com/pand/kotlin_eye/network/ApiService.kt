@@ -1,11 +1,11 @@
 package com.pand.kotlin_eye.network
 
 import com.pand.kotlin_eye.mvvm.model.pojo.GankIoData
+import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import java.util.*
 
 /**
  * @author： dwc

@@ -1,6 +1,7 @@
 package com.pand.kotlin_eye.network
 
 import android.util.Log
+import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
 import io.reactivex.Observable
 import io.reactivex.Observer
 import okhttp3.OkHttpClient
@@ -27,7 +28,7 @@ class ApiClient private constructor() {
     fun init() {
         val newBuilder = OkHttpClient().newBuilder()
         val okHttpClient = newBuilder.addInterceptor { chain ->
-            val newBuilder1 = chain?.request()?.newBuilder()
+            val newBuilder1 = chain.request()?.newBuilder()
             //添加head
             val build = newBuilder1?.build()
             chain.proceed(build)
