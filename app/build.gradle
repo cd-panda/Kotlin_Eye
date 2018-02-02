@@ -49,6 +49,8 @@ dependencies {
     //RxLifecycle相关
     implementation 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.0'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
+//glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 
 
 }
