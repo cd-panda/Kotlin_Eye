@@ -1,6 +1,8 @@
 package com.pand.kotlin_eye.network
 
 import android.util.Log
+import io.reactivex.Observable
+import io.reactivex.Observer
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -42,4 +44,17 @@ class ApiClient private constructor() {
 
         service = retrofit.create(ApiService::class.java)
     }
+
+    fun updateVersion(view: IView, callback: RequestCallback<VersionUpdate>) {
+        val updateVersion = ApiClient.instance.service.updateVersion("1.5.0", 1)
+        toSubscribe(view, updateVersion, callback)
+    }
+
+    private fun <T : Any?> toSubscribe(view: IView, o: Observable<T>, s: Observer<T>) {
+        o.compose(NetworkScheduler.compose())
+                .compose(NetworkScheduler.bindToLifecycle(view))
+                .subscribe(s)
+    }
+
+
 }

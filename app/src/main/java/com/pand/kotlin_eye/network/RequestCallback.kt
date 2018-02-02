@@ -11,9 +11,9 @@ import io.reactivex.disposables.Disposable
  * @desc：
  */
 abstract class RequestCallback<T>(private val context: Context) : Observer<ResponseWrapper<T>> {
-    protected open fun success(data: ResponseWrapper<T>) {}
+    protected open fun onSuccess(data: ResponseWrapper<T>) {}
     abstract fun onFail(e: Throwable)
-    protected open fun success(data: T) {}
+    protected open fun onSuccess(data: T) {}
 
     object status {
         val success = 1000
@@ -22,9 +22,9 @@ abstract class RequestCallback<T>(private val context: Context) : Observer<Respo
     override fun onNext(t: ResponseWrapper<T>) {
         if (t.code == status.success) {
             if (t.data == null) {
-                success(t)
+                onSuccess(t)
             } else {
-                success(t.data)
+                onSuccess(t.data)
             }
         }
         Toast.makeText(context,"",Toast.LENGTH_SHORT)
