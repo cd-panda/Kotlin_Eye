@@ -1,16 +1,15 @@
 package com.pand.kotlin_eye.mvvm.ui.activity
 
-import android.util.Log
 import com.pand.kotlin_eye.R
 import com.pand.kotlin_eye.base.BaseActivity
 import com.pand.kotlin_eye.databinding.ActivityMainBinding
 import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
 import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
 import com.pand.kotlin_eye.network.ApiClient
-import com.pand.kotlin_eye.network.IView
+import com.pand.kotlin_eye.mvvm.contract.IView
 import com.pand.kotlin_eye.network.RequestCallback
 
-class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() ,IView {
+class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>(), IView {
     override fun setViewModel() {
 
     }

@@ -1,5 +1,6 @@
 package com.pand.kotlin_eye.network
 
+import com.pand.kotlin_eye.mvvm.contract.IView
 import com.trello.rxlifecycle2.LifecycleTransformer
 import com.trello.rxlifecycle2.android.ActivityEvent
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity

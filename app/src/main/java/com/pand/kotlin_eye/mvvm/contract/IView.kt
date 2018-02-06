@@ -1,4 +1,4 @@
-package com.pand.kotlin_eye.network
+package com.pand.kotlin_eye.mvvm.contract
 
 /**
  * @author： dwc

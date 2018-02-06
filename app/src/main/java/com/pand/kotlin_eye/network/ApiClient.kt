@@ -1,6 +1,7 @@
 package com.pand.kotlin_eye.network
 
 import android.util.Log
+import com.pand.kotlin_eye.mvvm.contract.IView
 import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
 import io.reactivex.Observable
 import io.reactivex.Observer
