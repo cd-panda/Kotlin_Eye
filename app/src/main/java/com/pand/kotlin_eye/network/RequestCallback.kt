@@ -15,12 +15,12 @@ abstract class RequestCallback<T>(private val context: Context) : Observer<Respo
     abstract fun onFail(e: Throwable)
     protected open fun onSuccess(data: T) {}
 
-    object status {
+    object Status {
         val success = 1000
     }
 
     override fun onNext(t: ResponseWrapper<T>) {
-        if (t.code == status.success) {
+        if (t.code == Status.success) {
             if (t.data == null) {
                 onSuccess(t)
             } else {
