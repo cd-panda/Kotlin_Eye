@@ -60,6 +60,12 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>(), IView {
                     lastShowFragment = 2
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.mine-> if (lastShowFragment != 3) {
+                    switchFragment(lastShowFragment, 3)
+                    lastShowFragment = 3
+                    return@OnNavigationItemSelectedListener true
+                }
+
             }
             false
         })
