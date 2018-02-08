@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class ApiClient private constructor() {
     lateinit var service: ApiService
     val DEFAULT_TIMEOUT = 30L
-
+    private val base_url: String = "http://baobab.kaiyanapp.com/api/"
     companion object {
         val instance by lazy { ApiClient() }
     }
@@ -38,7 +38,7 @@ class ApiClient private constructor() {
         }).setLevel(HttpLoggingInterceptor.Level.BODY)).build()
         newBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
         val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.0.86:8079/dispatcher/")
+                .baseUrl(base_url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)

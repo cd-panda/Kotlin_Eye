@@ -43,34 +43,31 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>(), IView {
 
           })*/
         initFragments()
-        navigation.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                when (item.itemId) {
-                    R.id.home -> if (lastShowFragment != 0) {
-                        switchFragment(lastShowFragment, 0)
-                        lastShowFragment = 0
-                        return true
-                    }
-                    R.id.category -> if (lastShowFragment != 1) {
-                        switchFragment(lastShowFragment, 1)
-                        lastShowFragment = 1
-                        return true
-                    }
-                    R.id.hot -> if (lastShowFragment != 2) {
-                        switchFragment(lastShowFragment, 2)
-                        lastShowFragment = 2
-                        return true
-                    }
-
-                    R.id.mine -> if (lastShowFragment != 3) {
-                        switchFragment(lastShowFragment, 3)
-                        lastShowFragment = 3
-                        return true
-                    }
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> if (lastShowFragment != 0) {
+                    switchFragment(lastShowFragment, 0)
+                    lastShowFragment = 0
+                    return@OnNavigationItemSelectedListener true
                 }
-                return false
-            }
+                R.id.category -> if (lastShowFragment != 1) {
+                    switchFragment(lastShowFragment, 1)
+                    lastShowFragment = 1
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.hot -> if (lastShowFragment != 2) {
+                    switchFragment(lastShowFragment, 2)
+                    lastShowFragment = 2
+                    return@OnNavigationItemSelectedListener true
+                }
 
+                R.id.mine -> if (lastShowFragment != 3) {
+                    switchFragment(lastShowFragment, 3)
+                    lastShowFragment = 3
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
         })
     }
 
