@@ -49,26 +49,22 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>(), IView {
                     R.id.home -> if (lastShowFragment != 0) {
                         switchFragment(lastShowFragment, 0)
                         lastShowFragment = 0
-                        return true
                     }
                     R.id.category -> if (lastShowFragment != 1) {
                         switchFragment(lastShowFragment, 1)
                         lastShowFragment = 1
-                        return true
                     }
                     R.id.hot -> if (lastShowFragment != 2) {
                         switchFragment(lastShowFragment, 2)
                         lastShowFragment = 2
-                        return true
                     }
 
                     R.id.mine -> if (lastShowFragment != 3) {
                         switchFragment(lastShowFragment, 3)
                         lastShowFragment = 3
-                        return true
                     }
                 }
-                return false
+                return true
             }
 
         })

@@ -6,7 +6,10 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.databinding.ViewDataBinding
+import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.pand.kotlin_eye.R
 import com.pand.kotlin_eye.base.BaseActivity
@@ -25,7 +28,12 @@ class SplashActivity : BaseActivity<SplashViewModel, ViewDataBinding>(), SplashC
     override fun getViewModel(): SplashViewModel? = SplashViewModel(this)
     
     override fun getLayoutRes() = R.layout.activity_splash
-    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        super.onCreate(savedInstanceState)
+        
+    }
     override fun initData() {
         mViewModel?.loadImage()
 //        Observable.timer(2,TimeUnit.SECONDS).subscribe({toMain()})
