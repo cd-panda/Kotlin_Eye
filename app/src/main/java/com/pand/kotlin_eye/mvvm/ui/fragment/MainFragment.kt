@@ -3,25 +3,39 @@ package com.pand.kotlin_eye.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-
+import android.support.v7.widget.LinearLayoutManager
 import com.pand.kotlin_eye.R
+import com.pand.kotlin_eye.base.BaseFragment
+import com.pand.kotlin_eye.base.adapter.HomePageAdapter
+import com.pand.kotlin_eye.databinding.FragmentMainBinding
+import com.pand.kotlin_eye.mvvm.contract.HomePageContract
+import com.pand.kotlin_eye.mvvm.viewmodel.HomePageViewModel
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class MainFragment : Fragment() {
-    
-    
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        
-        return inflater!!.inflate(R.layout.fragment_main, container, false)
+class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(),HomePageContract.View{
+    override fun refresData(testdata: List<Char>): Unit {
+        homePageAdapter?.set(testdata,1)
+        homePageAdapter?.notifyDataSetChanged()
     }
+    
+    var homePageAdapter: HomePageAdapter? = null
+    
+    override fun setViewModel() {
+    }
+    
+    override fun getViewModel(): HomePageViewModel = HomePageViewModel(this)
+    
+    override fun getLayoutRes(): Int = R.layout.fragment_main
+    
+    override fun initView() {
+        homePageAdapter = HomePageAdapter(activity)
+        mBinding.recyclerview.layoutManager = LinearLayoutManager(activity)
+        mBinding.recyclerview.adapter = homePageAdapter
+    }
+    
     
     companion object {
         private val ARG_PARAM1 = "param1"
@@ -29,10 +43,10 @@ class MainFragment : Fragment() {
         fun newInstance(param1: String, param2: String): MainFragment {
             val fragment = MainFragment()
             val args = Bundle()
-            args.putString(MainFragment.ARG_PARAM1, param1)
-            args.putString(MainFragment.ARG_PARAM2, param2)
+            args.putString(ARG_PARAM1, param1)
+            args.putString(ARG_PARAM2, param2)
             fragment.arguments = args
             return fragment
         }
     }
-}// Required empty public constructor
+}

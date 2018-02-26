@@ -14,7 +14,7 @@ import com.pand.kotlin_eye.BR
 abstract class BaseAdapter<T>(context: Context) : RecyclerView.Adapter<BindingViewHolder<*>>() {
     protected var mLayoutInflater: LayoutInflater = LayoutInflater.from(context)
     protected lateinit var mCollection: MutableList<T>
-    private lateinit var presenter: Presenter
+    private  var presenter: Presenter?=null
     private var mDecorator: Decorator? = null
 
     interface Presenter
