@@ -7,6 +7,7 @@ import com.pand.kotlin_eye.R
 import com.pand.kotlin_eye.base.BaseActivity
 import com.pand.kotlin_eye.databinding.ActivityMainBinding
 import com.pand.kotlin_eye.mvvm.contract.IView
+import com.pand.kotlin_eye.mvvm.model.BaseModel
 import com.pand.kotlin_eye.mvvm.ui.fragment.CategoryFragment
 import com.pand.kotlin_eye.mvvm.ui.fragment.HotFragment
 import com.pand.kotlin_eye.mvvm.ui.fragment.MainFragment

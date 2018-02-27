@@ -9,6 +9,7 @@ import com.pand.kotlin_eye.base.BaseFragment
 import com.pand.kotlin_eye.base.adapter.HomePageAdapter
 import com.pand.kotlin_eye.databinding.FragmentMainBinding
 import com.pand.kotlin_eye.mvvm.contract.HomePageContract
+import com.pand.kotlin_eye.mvvm.model.pojo.HomeBean
 import com.pand.kotlin_eye.mvvm.viewmodel.HomePageViewModel
 
 
@@ -16,8 +17,8 @@ import com.pand.kotlin_eye.mvvm.viewmodel.HomePageViewModel
  * A simple [Fragment] subclass.
  */
 class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(),HomePageContract.View{
-    override fun refresData(testdata: List<Char>): Unit {
-        homePageAdapter?.set(testdata,1)
+    override fun refresData(testdata: HomeBean): Unit {
+        homePageAdapter?.setHomePageData(testdata.issueList[0].itemList)
         homePageAdapter?.notifyDataSetChanged()
     }
     

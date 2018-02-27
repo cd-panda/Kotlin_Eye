@@ -3,6 +3,7 @@ package com.pand.kotlin_eye.base
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import com.pand.kotlin_eye.mvvm.model.BaseModel
 import com.pand.kotlin_eye.mvvm.viewmodel.BaseViewModel
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 

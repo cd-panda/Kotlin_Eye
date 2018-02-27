@@ -1,6 +1,7 @@
 package com.pand.kotlin_eye.network
 
 import com.pand.kotlin_eye.mvvm.model.pojo.GankIoData
+import com.pand.kotlin_eye.mvvm.model.pojo.HomeBean
 import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -19,4 +20,8 @@ interface ApiService {
 
     @GET("http://gank.io/api/data/福利/{mon}/{day}")
     fun getSplash(@Path("mon") mon: Int,@Path("day") day: Int):Observable<GankIoData>
+    
+    @GET("v2/feed?")
+    fun getHomePageData(@Query("num") number: Number):Observable<HomeBean>
+    
 }
