@@ -10,5 +10,5 @@ import io.reactivex.schedulers.Schedulers
  */
 class HomePageModel {
     fun requestData(number: Number) = ApiClient.instance.service.getHomePageData(number).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    
+    fun loadMoreData(nextPageUrl: String?) = ApiClient.instance.service.getMoreHomeData(nextPageUrl?:"").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
 }

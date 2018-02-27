@@ -16,9 +16,17 @@ import com.pand.kotlin_eye.mvvm.viewmodel.HomePageViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(),HomePageContract.View{
-    override fun refresData(testdata: HomeBean): Unit {
-        homePageAdapter?.setHomePageData(testdata.issueList[0].itemList)
+class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(), HomePageContract.View {
+    override fun refreshEnd() {
+        mBinding.refreshlayout.finishRefresh()
+    }
+    
+    override fun loadMoreEnd() {
+        mBinding.refreshlayout.finishLoadmore()
+    }
+    
+    override fun refresData(testdata: ArrayList<HomeBean.Issue.Item>): Unit {
+        homePageAdapter?.setHomePageData(testdata)
         homePageAdapter?.notifyDataSetChanged()
     }
     
@@ -35,6 +43,8 @@ class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(),Home
         homePageAdapter = HomePageAdapter(activity)
         mBinding.recyclerview.layoutManager = LinearLayoutManager(activity)
         mBinding.recyclerview.adapter = homePageAdapter
+        mBinding.refreshlayout.setOnLoadmoreListener { mViewModel.loadMoreData() }
+        mBinding.refreshlayout.setOnRefreshListener({ mViewModel.loadFirstData() })
     }
     
     

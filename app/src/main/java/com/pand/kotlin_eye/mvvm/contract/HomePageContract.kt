@@ -7,7 +7,11 @@ import com.pand.kotlin_eye.mvvm.model.pojo.HomeBean
  */
 interface HomePageContract {
     interface View :IView{
-    fun refresData(data: HomeBean):Unit
+    fun refresData(data: ArrayList<HomeBean.Issue.Item>):Unit
+        fun loadMoreEnd()
+        fun refreshEnd()
     }
-    interface ViewModel
+    interface ViewModel{
+        fun loadMoreData()
+    }
 }

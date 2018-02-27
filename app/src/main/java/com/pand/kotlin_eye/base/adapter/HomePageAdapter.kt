@@ -2,6 +2,7 @@ package com.pand.kotlin_eye.base.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.View
                     setData(bannerFeedList, bannerTitleList)
                     setAdapter(object : BGABanner.Adapter<ImageView, String> {
                         override fun fillBannerItem(bgaBanner: BGABanner?, imageview: ImageView?, feedurl: String?, position: Int) {
+                           Log.e(TAG,"$feedurl+$position")
                             Glide.with(context)
                                     .load(feedurl)
                                     .placeholder(R.drawable.placeholder_banner)
@@ -46,6 +48,7 @@ class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.View
             }
             /*正常item的类型处理*/
             else -> {
+                Log.d(TAG,data?.get(position).toString())
             }
         }
     }

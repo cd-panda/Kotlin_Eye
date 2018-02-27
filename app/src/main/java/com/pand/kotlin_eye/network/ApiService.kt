@@ -7,6 +7,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 /**
  * @author： dwc
@@ -24,4 +25,6 @@ interface ApiService {
     @GET("v2/feed?")
     fun getHomePageData(@Query("num") number: Number):Observable<HomeBean>
     
+    @GET
+    fun getMoreHomeData(@Url url: String): Observable<HomeBean>
 }
