@@ -17,6 +17,10 @@ import com.pand.kotlin_eye.mvvm.viewmodel.HomePageViewModel
  * A simple [Fragment] subclass.
  */
 class MainFragment : BaseFragment<HomePageViewModel, FragmentMainBinding>(), HomePageContract.View {
+    override fun setBannerData(data: ArrayList<HomeBean.Issue.Item>) {
+    homePageAdapter?.setHomeBanner(data)
+    }
+    
     override fun refreshEnd() {
         mBinding.refreshlayout.finishRefresh()
     }

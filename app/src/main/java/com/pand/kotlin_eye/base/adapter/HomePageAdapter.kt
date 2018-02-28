@@ -16,13 +16,13 @@ import io.reactivex.Observable
 /**
  * Created by 李培生 on 2018/2/26 16:15.
  */
-class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomePageAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val TAG = this::class.java.simpleName
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         when (getItemViewType(position)) {
             /*banner类型的处理*/
             TYPE_BANNER -> {
-                val bannerData: ArrayList<HomeBean.Issue.Item>? = data?.take(5)?.toCollection(ArrayList())
+                val bannerData: ArrayList<HomeBean.Issue.Item>? = homebannerdata?.slice(1..5)?.toCollection(ArrayList())
                 val bannerFeedList: ArrayList<String> = ArrayList()
                 val bannerTitleList: ArrayList<String> = ArrayList()
                 Observable.fromIterable(bannerData).subscribe({ list ->
@@ -48,7 +48,9 @@ class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.View
             }
             /*正常item的类型处理*/
             else -> {
+                val holder:ItemHHolder =holder as ItemHHolder
                 Log.d(TAG,data?.get(position).toString())
+                Glide.with(context).load(data?.get(position)?.data?.cover?.feed).into(holder.conver)
             }
         }
     }
@@ -69,6 +71,7 @@ class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.View
      val TYPE_BANNER = 0
      val TYPE_ITEM = 1
     var data: ArrayList<HomeBean.Issue.Item>? = null
+    var homebannerdata: ArrayList<HomeBean.Issue.Item>? = null
     
     
     override fun getItemViewType(position: Int): Int {
@@ -85,13 +88,18 @@ class HomePageAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.View
         notifyDataSetChanged()
     }
     
+    fun setHomeBanner(banner: ArrayList<HomeBean.Issue.Item>) {
+        homebannerdata = banner
+        notifyDataSetChanged()
+    }
+    
     
     class BannerHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
         val banner: BGABanner = inflate.findViewById(R.id.banner)
     }
     
     class ItemHHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
-    
+    val conver:ImageView=inflate.findViewById(R.id.conver)
     }
 }
 

@@ -8,6 +8,7 @@ import com.pand.kotlin_eye.mvvm.model.pojo.HomeBean
 interface HomePageContract {
     interface View :IView{
     fun refresData(data: ArrayList<HomeBean.Issue.Item>):Unit
+        fun setBannerData(data: ArrayList<HomeBean.Issue.Item>)
         fun loadMoreEnd()
         fun refreshEnd()
     }
