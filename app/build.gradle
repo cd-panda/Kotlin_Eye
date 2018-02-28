@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.pand.kotlin_eye"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -57,4 +57,7 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'//没有使用特殊Header，可以不加这行
 //Banner
     implementation 'cn.bingoogolapple:bga-banner:2.1.8@aar'
+//    视频播放
+    compile 'com.shuyu:GSYVideoPlayer:4.1.0'
+
 }
