@@ -8,3 +8,4 @@ package com.pand.kotlin_eye.mvvm.model.pojo
 data class GankIoData(var isError: Boolean, var results: List<ResultsBean>)
 data class ResultsBean( var _id: String, var createdAt: String, var desc: String, var publishedAt: String, var source: String, var type: String, var url: String, var isUsed: Boolean, var who: String)
 data class VersionUpdate(var version: String?, var force: Boolean, var forceNotice: Boolean, var platform: Int, var url: String?, var description: String?, var valid: Boolean)
+data class Category(var id:Int,var name:String,var alias:String,var description:String,var bgPicture:String,var bgColor:String,var headerImage:String,var defaultAuthorId:String)

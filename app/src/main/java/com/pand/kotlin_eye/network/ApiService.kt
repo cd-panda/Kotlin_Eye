@@ -1,5 +1,6 @@
 package com.pand.kotlin_eye.network
 
+import com.pand.kotlin_eye.mvvm.model.pojo.Category
 import com.pand.kotlin_eye.mvvm.model.pojo.GankIoData
 import com.pand.kotlin_eye.mvvm.model.pojo.HomeBean
 import com.pand.kotlin_eye.mvvm.model.pojo.VersionUpdate
@@ -27,4 +28,7 @@ interface ApiService {
     
     @GET
     fun getMoreHomeData(@Url url: String): Observable<HomeBean>
+    
+    @GET("v4/categories")
+    fun getCategory():Observable<ArrayList<Category>>
 }
