@@ -1,17 +1,18 @@
 package com.pand.kotlin_eye.mvvm.ui.fragment
 
 
-import android.databinding.ViewDataBinding
-import android.os.Bundle
+import android.graphics.Rect
 import android.support.v4.app.Fragment
-import android.util.Log
-import android.view.LayoutInflater
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.ViewGroup
 
 import com.pand.kotlin_eye.R
 import com.pand.kotlin_eye.base.BaseFragment
+import com.pand.kotlin_eye.base.adapter.SingleTypeAdapter
 import com.pand.kotlin_eye.databinding.FragmentCategoryBinding
+import com.pand.kotlin_eye.mvvm.contract.CategoryContract
+import com.pand.kotlin_eye.mvvm.model.pojo.Category
 import com.pand.kotlin_eye.mvvm.viewmodel.CategoryViewModel
 
 
@@ -20,55 +21,42 @@ import com.pand.kotlin_eye.mvvm.viewmodel.CategoryViewModel
  * Use the [CategoryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CategoryFragment : BaseFragment<CategoryViewModel, FragmentCategoryBinding>() {
+class CategoryFragment : BaseFragment<CategoryViewModel, FragmentCategoryBinding>() ,CategoryContract.View{
+    override fun loadmore() {
+    
+    }
+    
+    override fun reresh(it: ArrayList<Category>) {
+        adapter.set(it)
+    }
+    
+    lateinit var recyclerView:RecyclerView
+    lateinit var adapter:SingleTypeAdapter<Category>
     override fun initView() {
-        Log.e(TAG,"initview")
+        recyclerView=mBinding.recyclerview
+        adapter= SingleTypeAdapter(activity,R.layout.item_category)
+        adapter.setDecorator(CategoryViewModel.CategoryPresenter(activity))
+        recyclerView.layoutManager=GridLayoutManager(activity,2)
+        recyclerView.adapter=adapter
+        recyclerView.addItemDecoration(object :RecyclerView.ItemDecoration(){
+//            设置间隔
+            override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView?) {
+                outRect.top=5
+                outRect.right=5
+            }
+        })
     }
     
     override fun setViewModel() {
     
     }
     
-    override fun getViewModel()= CategoryViewModel()
+    override fun getViewModel()= CategoryViewModel(this)
     
     override fun getLayoutRes()= R.layout.fragment_category
     
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
-    }
-
+  
   
 
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CategoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): CategoryFragment {
-            val fragment = CategoryFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
-}// Required empty public constructor
+   
+}
