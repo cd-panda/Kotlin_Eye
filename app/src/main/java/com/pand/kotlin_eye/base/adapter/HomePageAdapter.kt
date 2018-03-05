@@ -24,7 +24,8 @@ class HomePageAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.
             when (getItemViewType(position)) {
                 /*banner类型的处理*/
                 TYPE_BANNER -> {
-                    val bannerData: ArrayList<HomeBean.Issue.Item>? = homebannerdata?.slice(1..5)?.toCollection(ArrayList())
+                    /*这里不确定有多少个。先取1.。4*/
+                    val bannerData: ArrayList<HomeBean.Issue.Item>? = homebannerdata?.slice(1..4)?.toCollection(ArrayList())
                     val bannerFeedList: ArrayList<String> = ArrayList()
                     val bannerTitleList: ArrayList<String> = ArrayList()
                     Observable.fromIterable(bannerData).subscribe({ list ->
